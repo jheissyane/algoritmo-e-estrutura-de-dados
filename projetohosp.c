@@ -1,3 +1,10 @@
+/*  Membros
+Gabriel Borges Garcia - 202201691
+Joao Vitor Alves dos Reis - 202201697
+Jheissyane Kelly da Silva Souza - 202201694
+Mateus Henrique Ghandi de Oliveira - 202201706
+*/ // puta que pariu git sucumba
+
 
 #include <stdio.h>
 #include <string.h>
@@ -9,18 +16,13 @@ typedef struct {
 	            char dataDeInclusao[12];
 	            int cor;
 	            char status[20];
-	            char cadcpf[15];
+	            char cadcpf[15];//batata
 	            char cadtelefone[15];
 			}PACIENTE;
 			
 typedef struct {PACIENTE indice[MAX];
 	            int ult;
 			}HOSPITAL;
-			
-void inserir_paciente(PACIENTE novoCadastro, HOSPITAL *clinica){
-    clinica->indice[clinica->ult] = novoCadastro;
-    clinica->ult++;
-}
 
 void cadastrar_paciente(PACIENTE novoCadastro, HOSPITAL *clinica){
         printf("Insira o nome do paciente\n");
@@ -44,16 +46,19 @@ void cadastrar_paciente(PACIENTE novoCadastro, HOSPITAL *clinica){
         getchar();
         
         do{
-        printf("digite o numero de prioridade do atendimento\n");
-        printf("urgência baixa - verde (1)\n");
-        printf("urgência media - amarelo (2)\n");
-        printf("urgência alta - vermelho (3)\n");
+        printf("Digite o numero de prioridade do atendimento\n");
+        printf("Urgência baixa - verde (1)\n");
+        printf("Urgência media - amarelo (2)\n");
+        printf("Urgência alta - vermelho (3)\n");
         scanf("%d", &novoCadastro.cor);
         }
         while(novoCadastro.cor>3 || novoCadastro.cor<1);
         getchar();
         
-        inserir_paciente(novoCadastro, clinica); // colocar os dados do paciente no hospital
+    clinica->indice[clinica->ult] = novoCadastro;
+    clinica->ult++;
+        
+        //inserir_paciente(novoCadastro, clinica); // colocar os dados do paciente no hospital
 }
 
 void listar_pacientes(HOSPITAL clinica){
@@ -63,16 +68,16 @@ void listar_pacientes(HOSPITAL clinica){
         printf("Nome do paciente: %s\n", clinica.indice[i].nomePaciente);
         printf("Descricao do problema: %s\n", clinica.indice[i].descricaoProblema);
         printf("Data de inclusao: %s\n", clinica.indice[i].dataDeInclusao);
-        printf("cadasto de cpf: %s\n", clinica.indice[i].cadcpf);
-        printf("cadastro de telefone:%s\n", clinica.indice[i].cadtelefone);
+        printf("Cadasto de cpf: %s\n", clinica.indice[i].cadcpf);
+        printf("Cadastro de telefone: %s\n", clinica.indice[i].cadtelefone);
         if(clinica.indice[i].cor==1){
-        printf("urgencia de atendimento baixa - VERDE\n");
+        printf("Urgencia de atendimento baixa - VERDE\n");
     }
     else if(clinica.indice[i].cor==2){
-        printf("urgencia de atendimento media - AMARELO\n");
+        printf("Urgencia de atendimento media - AMARELO\n");
     }
     else{
-        printf("urgencia de atendimento alta - VERMELHO\n");
+        printf("Urgencia de atendimento alta - VERMELHO\n");
     }
 }}
 
@@ -107,6 +112,9 @@ int main(){
     } while(opcao!=3);
     
 }
+
+
+
 
 
 
